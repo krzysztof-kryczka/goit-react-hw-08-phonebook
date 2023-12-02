@@ -1,8 +1,8 @@
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
-import { getContacts } from '#services/api';
+import { refreshUser } from '#redux/auth/operation';
 import { Route, Routes } from 'react-router-dom';
-
+import { useAuth } from '#hook/useAuth';
 import { Layout } from '#components/Layout/Layout';
 import { PrivateRoute } from '#components/PrivateRoute';
 import { ProtectedRoute } from '#components/ProtectedRoute';
@@ -14,12 +14,17 @@ const Contacts = lazy(() => import('#pages/Contacts'));
 
 const App = () => {
   const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(getContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
+  console.log(isRefreshing);
+
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
