@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '#services/api';
+import { addContact } from '#redux/contacts/operation';
 import css from './ContactForm.module.css';
 
 export const ContactForm = () => {

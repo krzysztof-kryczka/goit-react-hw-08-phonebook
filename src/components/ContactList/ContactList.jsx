@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import css from './ContactList.module.css';
-import { deleteContact } from '#services/api';
-
+import { deleteContact } from '#redux/contacts/operation';
 export const ContactList = () => {
   const dispatch = useDispatch();
 

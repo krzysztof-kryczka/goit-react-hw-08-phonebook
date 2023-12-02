@@ -10,9 +10,9 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { configureStore } from '@reduxjs/toolkit';
-import { contactReducer } from './contactSlice';
-import { filterReducer } from './filterSlice';
-import { authReducer } from './auth/authSlice';
+import { contactReducer } from '#redux/contacts/slice/contactSlice';
+import { filterReducer } from '#redux/contacts/slice/filterSlice';
+import { authReducer } from '#redux/auth/authSlice';
 
 const authPersistConfig = {
   key: 'auth',

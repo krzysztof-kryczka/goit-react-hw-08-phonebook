@@ -46,8 +46,6 @@
     "#components/*": "./src/components/*",
     "#pages/*": "./src/pages/*",
     "#redux/*": "./src/redux/*",
-    "#consts/*": "./src/redux/consts/*",
-    "#services/*": "./src/redux/services/*",
     "#hook/*": "./src/hook/*"
   }
 }
