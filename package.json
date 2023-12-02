@@ -44,8 +44,10 @@
   },
   "imports": {
     "#components/*": "./src/components/*",
-    "#consts/*": "./src/redux/consts/*",
+    "#pages/*": "./src/pages/*",
     "#redux/*": "./src/redux/*",
-    "#services/*": "./src/redux/services/*"
+    "#consts/*": "./src/redux/consts/*",
+    "#services/*": "./src/redux/services/*",
+    "#hook/*": "./src/hook/*"
   }
 }
