@@ -11,6 +11,7 @@ const Home = lazy(() => import('#pages/Home'));
 const Register = lazy(() => import('#pages/Register'));
 const Login = lazy(() => import('#pages/Login'));
 const Contacts = lazy(() => import('#pages/Contacts'));
+const ContactEdit = lazy(() => import('#pages/ContactEdit'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -43,6 +44,13 @@ const App = () => {
         <Route
           path="/contacts"
           element={<PrivateRoute element={<Contacts />} redirectTo="/login" />}
+        />
+
+        <Route
+          path="contacts/:id/edit"
+          element={
+            <PrivateRoute element={<ContactEdit />} redirectTo="/login" />
+          }
         />
       </Route>
       <Route path="*" element={<Home />} />

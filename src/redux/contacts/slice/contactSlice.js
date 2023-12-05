@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getContacts, addContact, deleteContact } from '#redux/contacts/operation';
+import { getContacts, addContact, deleteContact, updateContact } from '#redux/contacts/operation';
 
 const initialContacts = {
   items: [],
@@ -53,6 +53,23 @@ const contactSlice = createSlice({
         );
       })
       .addCase(deleteContact.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      // updateContact
+      .addCase(updateContact.pending, state => {
+        state.status = 'pending';
+      })
+      .addCase(updateContact.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.items.findIndex(
+          contact => contact.id === action.payload.id
+        );
+        state.items[index].name = action.payload.name;
+        state.items[index].number = action.payload.number;
+      })
+      .addCase(updateContact.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       });
