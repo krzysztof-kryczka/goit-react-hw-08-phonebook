@@ -1,7 +1,11 @@
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '#redux/contacts/operation';
-import css from './ContactForm.module.css';
+import Button from '@mui/material/Button';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import { Typography } from '@mui/material';
 
 export const ContactForm = () => {
   const contacts = useSelector(state => state.contacts.items);
@@ -31,36 +35,66 @@ export const ContactForm = () => {
 
   return (
     <>
-      <div className={css.form}>
-        <h2 className={css.form__title}>Phonebook</h2>
-        <form className={css.form__form} onSubmit={handleSubmit}>
-          <label className={css.form__label} htmlFor="name">
-            Name
-          </label>
-          <input
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          padding: '20px',
+        }}
+      >
+        <Typography
+          variant="h4"
+          sx={{
+            textAlign: 'center',
+            fontWeight: 'bold',
+            fontSize: 'h4.fontSize',
+            color: '#53a7eb',
+          }}
+        >
+          {`Phonebook`}
+        </Typography>
+        <Box
+          component="form"
+          sx={{
+            '& .MuiTextField-root': { m: 2, width: '60ch' },
+            display: 'flex',
+            flexDirection: 'column',
+            width: 'auto',
+            justifyContent: 'center',
+            alignItems: 'center',
+            ml: 'auto', //margin-left
+            mr: 'auto', //margin-right
+          }}
+          noValidate
+          onSubmit={handleSubmit}
+        >
+          <TextField
+            required
+            label="Name"
             type="text"
             name="name"
-            className={css.form__input}
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
           />
-          <label className={css.form__label} htmlFor="number">
-            Number
-          </label>
-          <input
+
+          <TextField
+            required
+            label="Number"
             type="tel"
             name="number"
-            className={css.form__input}
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
           />
-          <button className={css.form__btn} type="submit">
+
+          <Button
+            variant="contained"
+            size="large"
+            startIcon={<PersonAddIcon />}
+            type="submit"
+          >
             Add contact
-          </button>
-        </form>
-      </div>
+          </Button>
+        </Box>
+      </Box>
     </>
   );
 };
