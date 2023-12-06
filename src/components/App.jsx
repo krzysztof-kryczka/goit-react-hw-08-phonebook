@@ -21,8 +21,6 @@ const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  console.log(isRefreshing);
-
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
