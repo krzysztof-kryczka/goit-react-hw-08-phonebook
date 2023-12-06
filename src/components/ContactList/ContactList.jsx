@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
-import css from './ContactList.module.css';
-
 import { ContactListItem } from '#components/ContactListItem/ContactListItem';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import List from '@mui/material/List';
 
 export const ContactList = () => {
-
   const contacts = useSelector(state => state.contacts.items);
   const filterValue = useSelector(state => state.filter.status);
   const error = useSelector(state => state.contacts.error);
@@ -14,17 +14,46 @@ export const ContactList = () => {
   );
 
   return (
-    <div className={css.contacts}>
-      <h2>Contacts</h2>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '20px',
+      }}
+    >
+      <Typography
+        variant="h4"
+        sx={{
+          textAlign: 'center',
+          fontWeight: 'bold',
+          fontSize: 'h4.fontSize',
+          color: '#53a7eb',
+        }}
+      >
+        {`Contacts List`}
+      </Typography>
       {filterContact?.length > 0 ? (
-        <ul className={css.contacts__list}>
+        <List sx={{ width: '120ch' }}>
           {filterContact?.map(({ id, name, number }) => (
             <ContactListItem key={id} id={id} name={name} number={number} />
           ))}
-        </ul>
+        </List>
       ) : (
-        (error && <p>Error: {error}</p>) || <p>No contacts in phoneBook</p>
+        (error && <p>Error: {error}</p>) || (
+          <Typography
+            variant="p"
+            sx={{
+              textAlign: 'center',
+              fontWeight: 'bold',
+              fontSize: 'h5.fontSize',
+              color: '#ff4400',
+            }}
+          >
+            {`No contacts in phoneBook`}
+          </Typography>
+        )
       )}
-    </div>
+    </Box>
   );
 };
