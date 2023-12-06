@@ -1,4 +1,4 @@
-import { useAuth } from 'hook/useAuth';
+import { useAuth } from '#hook/useAuth';
 import { NavLink } from 'react-router-dom';
 import css from './NavigationBar.module.css';
 

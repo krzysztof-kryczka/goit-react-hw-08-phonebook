@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { NavigationBar } from '#components/NavigationBar/NavigationBar';
-import { NavigationAuth } from '../NavigationAuth/NavigationAuth';
-import { NavigationUserMenu } from 'components/NavigationUserMenu/NavigationUserMenu';
+import { NavigationAuth } from '#components/NavigationAuth/NavigationAuth';
+import { NavigationUserMenu } from '#components/NavigationUserMenu/NavigationUserMenu';
 import { useAuth } from '#hook/useAuth';
 import css from './Layout.module.css';
 
