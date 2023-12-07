@@ -9,6 +9,9 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
+import InputAdornment from '@mui/material/InputAdornment';
 
 export const ContactEdit = () => {
   const selectContacts = state => state.contacts.items;
@@ -110,6 +113,13 @@ export const ContactEdit = () => {
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               onChange={onInputChange}
               value={name}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <PersonOutlineIcon />
+                  </InputAdornment>
+                ),
+              }}
             />
 
             <TextField
@@ -120,6 +130,13 @@ export const ContactEdit = () => {
               placeholder="Enter contact`s number"
               onChange={onInputChange}
               value={number}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <PhoneEnabledIcon />
+                  </InputAdornment>
+                ),
+              }}
             />
             <Button
               variant="contained"

@@ -5,7 +5,10 @@ import Button from '@mui/material/Button';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
-import { Typography } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
+import InputAdornment from '@mui/material/InputAdornment';
 
 export const ContactForm = () => {
   const contacts = useSelector(state => state.contacts.items);
@@ -75,6 +78,13 @@ export const ContactForm = () => {
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <PersonOutlineIcon />
+                </InputAdornment>
+              ),
+            }}
           />
 
           <TextField
@@ -83,6 +93,13 @@ export const ContactForm = () => {
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <PhoneEnabledIcon />
+                </InputAdornment>
+              ),
+            }}
           />
 
           <Button

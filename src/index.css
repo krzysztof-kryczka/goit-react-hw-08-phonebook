@@ -16,4 +16,17 @@ code {
 
 a {
   text-decoration: none;
+  color: orangered;
+}
+
+a:link {
+  color: brown;
+}
+
+a:hover {
+  color: #1976d2;
+}
+
+a:active {
+
 }
