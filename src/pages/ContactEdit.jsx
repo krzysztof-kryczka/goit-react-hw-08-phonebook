@@ -5,6 +5,11 @@ import { updateContact } from '#redux/contacts/operation';
 import { createSelector } from '@reduxjs/toolkit';
 import { useState } from 'react';
 
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
+
 export const ContactEdit = () => {
   const selectContacts = state => state.contacts.items;
 
@@ -48,30 +53,85 @@ export const ContactEdit = () => {
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Change name:
-          <input
-            onChange={onInputChange}
-            value={name}
-            name="name"
-            placeholder="Enter contact`s name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          />
-        </label>
-        <label>
-          Change phone:
-          <input
-            onChange={onInputChange}
-            value={number}
-            type="tel"
-            name="number"
-            placeholder="Enter contact`s number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          />
-        </label>
-        <button type="submit">UPDATE CONTACT</button>
-      </form>
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+        }}
+      >
+        <Box
+          sx={{
+            pt: '45px', //padding-top
+            pb: '45px', //padding-bottom
+            borderRadius: '5%',
+            borderStyle: 'solid',
+            borderWidth: '2px',
+            width: '600px',
+            ml: 'auto', //margin-left
+            mr: 'auto', //margin-right
+            boxShadow: '0 3px 5px 0 #000',
+          }}
+        >
+          <Box
+            sx={{
+              textAlign: 'center',
+              fontWeight: 'bold',
+              fontSize: 'h3.fontSize',
+              fontFamily: 'Monospace',
+              letterSpacing: 6,
+            }}
+          >
+            Edit Contact
+          </Box>
+
+          <Box
+            component="form"
+            sx={{
+              '& .MuiTextField-root': { m: 2, width: '60ch' },
+              display: 'flex',
+              flexDirection: 'column',
+              width: 'auto',
+              justifyContent: 'center',
+              alignItems: 'center',
+              ml: 'auto', //margin-left
+              mr: 'auto', //margin-right
+            }}
+            noValidate
+            onSubmit={handleSubmit}
+          >
+            <TextField
+              required
+              label="Email"
+              type="name"
+              name="name"
+              placeholder="Enter contact`s name"
+              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              onChange={onInputChange}
+              value={name}
+            />
+
+            <TextField
+              required
+              label="Change phone:"
+              type="number"
+              name="number"
+              placeholder="Enter contact`s number"
+              onChange={onInputChange}
+              value={number}
+            />
+            <Button
+              variant="contained"
+              size="large"
+              endIcon={<ContactPhoneIcon />}
+              type="submit"
+            >
+              UPDATE CONTACT
+            </Button>
+          </Box>
+        </Box>
+      </Box>
     </>
   );
 };
